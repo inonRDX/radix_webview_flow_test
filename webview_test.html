@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radix Flows</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background-color: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #333;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #4285F4;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #357ae8;
+    }
+
+    hr {
+      margin: 24px 0;
+      border: none;
+      border-top: 1px solid #ddd;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Radix Flows</h2>
+
+    <button onclick='radix.startFlow("termsofservice")'>Terms of Service</button>
+    <button onclick='radix.startFlow("privacypolicy")'>Privacy Policy</button>
+    <button onclick='radix.startFlow("cast")'>Start Cast</button>
+    <button onclick='radix.startFlow("checkout")'>Checkout</button>
+    <button onclick='radix.startFlow("test")'>Test - not a real flow</button>
+
+    <hr>
+
+    <input type="text" id="flowInput" placeholder="Enter flow name">
+    <button onclick="startCustomFlow()">Start Custom Flow</button>
+  </div>
+
+  <script>
+    const radix = {
+      doCommand: function(commandJson) {
+        console.log("Command sent:", commandJson);
+      },
+      startFlow: function(flowName) {
+        console.log("Starting flow:", flowName);
+        alert("Started flow: " + flowName);
+      }
+    };
+
+    function startCustomFlow() {
+      const input = document.getElementById("flowInput").value.trim();
+      if (input) {
+        radix.startFlow(input);
+      } else {
+        alert("Please enter a flow name.");
+      }
+    }
+  </script>
+</body>
+</html>
